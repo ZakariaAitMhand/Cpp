@@ -1,0 +1,45 @@
+# Project: labyrinthe
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = personnage.o main.o labyrinthe.o cellule.o murs.o generation.o $(RES)
+LINKOBJ  = personnage.o main.o labyrinthe.o cellule.o murs.o generation.o $(RES)
+LIBS =  -L"C:/Users/wail/Dev-Cpp/lib" -mwindows -lmingw32  -lSDLmain  -lSDL SDL_image.lib fmodvc.lib  
+INCS =  -I"C:/Users/wail/Dev-Cpp/include" 
+CXXINCS =  -I"C:/Users/wail/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Users/wail/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Users/wail/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Users/wail/Dev-Cpp/include/c++/3.4.2"  -I"C:/Users/wail/Dev-Cpp/include" 
+BIN  = Projet1.exe
+CXXFLAGS = $(CXXINCS)  
+CFLAGS = $(INCS)  
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before Projet1.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "Projet1.exe" $(LIBS)
+
+personnage.o: personnage.cpp
+	$(CPP) -c personnage.cpp -o personnage.o $(CXXFLAGS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+labyrinthe.o: labyrinthe.cpp
+	$(CPP) -c labyrinthe.cpp -o labyrinthe.o $(CXXFLAGS)
+
+cellule.o: cellule.cpp
+	$(CPP) -c cellule.cpp -o cellule.o $(CXXFLAGS)
+
+murs.o: murs.cpp
+	$(CPP) -c murs.cpp -o murs.o $(CXXFLAGS)
+
+generation.o: generation.cpp
+	$(CPP) -c generation.cpp -o generation.o $(CXXFLAGS)
